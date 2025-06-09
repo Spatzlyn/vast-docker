@@ -19,5 +19,11 @@ RUN pip3 install \
     auto-gptq \
     jupyter
 
-# 5. Jupyter 노트북 서버 실행
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8080", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
+# 5. 작업 디렉토리 설정
+WORKDIR /workspace
+
+# 6. 포트 노출
+EXPOSE 8080
+
+# 7. Jupyter 노트북 서버 실행 (수정된 버전)
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8080", "--allow-root", "--no-browser", "--NotebookApp.token=", "--NotebookApp.password="]
